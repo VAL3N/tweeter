@@ -6,55 +6,89 @@
 
 $(document).ready(function() {
 
-  const userInfoLocation = {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png",
+  const data = [
+    {
+      "user": {
+        "name": "Newton",
+        "avatars": "https://i.imgur.com/73hZDYK.png"
+        ,
         "handle": "@SirIsaac"
       },
-    "content": {
+      "content": {
         "text": "If I have seen further it is by standing on the shoulders of giants"
       },
-    "created_at": 1461116232227
-  };
-
-  const createTweetElement = function(userData) {
-
-    const user = { 
-      name: userData.user.name, 
-      avatar: userData.user.avatar, 
-      handle: userData.user.handle, 
-      tweetText: userData.content.text, 
-      createdAt: userData.created_at 
-    };
-
-    $('.tweet header .user').text(user.name);
-    $('.tweet header .user-handle').text(user.handle);
-    $('.tweet .tweet-content').text(user.tweetText);
-    $('.tweet footer h6').text(user.createdAt);
-
-    console.log(user.name);
-    return user;
-  }
-
-  console.log(createTweetElement(userInfoLocation));
-  
-  // const newTweet = (user) => {
-  //   $('.tweet header div p').text(user.name);
-  //   $('.tweet header p').text(user.handle);
-  //   $('.tweet .tweet-content').text(user.tweetText);
-  //   $('.tweet footer h6').text(user.createdAt);
-  // }
-
+      "created_at": 1461116232227
+    },
+    {
+      "user": {
+        "name": "Descartes",
+        "avatars": "https://i.imgur.com/nlhLi3I.png",
+        "handle": "@rd" },
+      "content": {
+        "text": "Je pense , donc je suis"
+      },
+      "created_at": 1461113959088
+    }
+  ]
 
   // new code
-  // const newTweet = function(user) {
-  //   for (const user of userInfoLocation) {
-  //     $('.tweet header .user').text(user.name);
-  //     $('.tweet header .user-handle').text(user.handle);
-  //     $('.tweet .tweet-content').text(user.tweetText);
-  //     $('.tweet footer h6').text(user.createdAt);
-  //   }
-  // }
+  const renderTweets = function(data) {
+    for (const tweet of data) {
+      const $tweet = createTweetElement(tweet);
+      $('#tweets-container').append($tweet);
+    }
+  };
+
+
+
+  // const createTweetElement = function(data) {
+
+  //   // const user = { 
+  //   //   name: data.user.name, 
+  //   //   avatar: data.user.avatar, 
+  //   //   handle: data.user.handle, 
+  //   //   tweetText: data.content.text, 
+  //   //   createdAt: data.created_at 
+  //   // };
+
+  //   $('.tweet header .name').text(data.user.name);
+  //   $('.tweet header .user-handle').text(data.user.handle);
+  //   $('.tweet .tweet-content').text(data.content.text);
+  //   $('.tweet footer h6').text(data.created_at);
+
+  // };
+
+
+
+
+  const createTweetElement = function(data) {
+    const newTweet = 
+      `<article class="new-created-tweet">
+
+        <header class="username-background">
+          <div class="center-user">
+            <img class="user" src=${data.user.avatars}">
+            <p class="name">${data.user.name}</p>
+          </div>
+          <p class="user-handle">${data.user.handle}</p>
+
+        </header>
+
+        <p class="tweet-content">
+          ${data.content.text}
+        </p>
+
+        <footer class="center-footer">
+            <h6 class="h6-element">${data.created_at}</h6>
+            <h6 class="h6-element">reactions</h6>
+        </footer>
+
+      </article>`;
+  
+      return $(newTweet);
+    
+    }
+
+    renderTweets(data);
 
 });
