@@ -1,0 +1,77 @@
+.new-created-tweet {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid #545149;
+  margin-bottom: 2em;
+  padding: 1.5%;
+}
+
+.new-created-tweet:hover {
+  box-shadow: 8px 9px 3px 4px #888888;
+}
+.new-created-tweet:hover .center-user {
+  font-weight: 400;
+}
+.new-created-tweet:hover .tweet-content {
+  font-weight: 400;
+}
+.new-created-tweet:hover .center-footer  {
+  font-weight: 400;
+}
+.new-created-tweet:hover .user-handle {
+  visibility: visible;
+}
+
+.username-background {
+  background-color: #f4f1ec;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1em;
+  margin-top: 20px;
+  height: 100px;
+}
+
+.center-user {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  font-weight: 300;
+}
+
+.name {
+  padding-left: 20px;
+}
+
+.tweet-content {
+  display: flex;
+  align-self: flex-start;
+  padding-left: 1em;
+  margin: 0em 1em;
+  border-bottom: 5px solid #545149;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
+
+.username-edit {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.center-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: 300;
+  
+}
+
+.user-handle {
+  
+  visibility: hidden;
+}
+
+.h6-element {
+  margin: .7% 2%;
+}
