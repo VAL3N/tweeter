@@ -45,12 +45,13 @@
 
 .tweet-content {
   display: flex;
-  align-self: flex-start;
+  align-self: center;
   padding-left: 1em;
   margin: 0em 1em;
   border-bottom: 5px solid #545149;
   font-weight: 300;
   padding-bottom: 10px;
+  width: 95%;
 }
 
 .username-edit {
