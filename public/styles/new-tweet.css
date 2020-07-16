@@ -38,3 +38,21 @@
   display: flex;
   justify-content: flex-start;
 }
+
+.alert {
+  display: none;
+  align-self: center;
+  border: 5px solid red;
+  text-align: center;
+  color: red;
+  margin: 1em;
+}
+
+.alert-2 {
+  display: none;
+  align-self: center;
+  border: 5px solid red;
+  text-align: center;
+  color: red;
+  margin: 1em;
+}
