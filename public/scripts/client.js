@@ -123,8 +123,8 @@ $(document).ready(function() {
         console.log(res);
         $('.tweet').empty();
         renderTweets(res);
-        $("#tweet-text").replaceWith(`<textarea name="text" id="tweet-text" class="edit-text-area"></textarea>`);
-
       });
+      $('#tweet-text').val('');
+      $('.counter').val(140);
     }
 });
