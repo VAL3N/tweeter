@@ -20,7 +20,7 @@
 
 .btn {
   color: #FFFFFF;
-  background-color: #4056A1;
+  background-color: #022449;
   outline: none;
   font-family:'Bungee', sans-serif;
 }
@@ -31,12 +31,13 @@
   border-left: 0;
   border-right: 0;
   border-bottom: 5px solid #545149;
-  
+  outline-color: #656464;
 }
 
 .right-flex {
   display: flex;
   justify-content: flex-start;
+  padding-bottom: 5px;
 }
 
 .alert {
