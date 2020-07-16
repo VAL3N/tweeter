@@ -62,8 +62,11 @@ $(document).ready(function() {
 
 
   const createTweetElement = function(data) {
+
+    let phrase = data.content.text;
+
     const newTweet = 
-      `<article class="new-created-tweet">
+      $(`<article class="new-created-tweet">
 
         <header class="username-background">
           <div class="center-user">
@@ -83,7 +86,9 @@ $(document).ready(function() {
             <h6 class="h6-element">reactions</h6>
         </footer>
 
-      </article>`;
+      </article>`);
+
+    $(newTweet.find('.tweet-content')).text(phrase);
   
     return $(newTweet);
     
