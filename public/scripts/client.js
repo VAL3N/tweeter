@@ -35,7 +35,7 @@ $(document).ready(function() {
   const renderTweets = function(data) {
     for (const tweet of data) {
       const $tweet = createTweetElement(tweet);
-      $('#tweets-container').append($tweet);
+      $('#tweets-container').prepend($tweet);
     }
   };
 
@@ -123,6 +123,8 @@ $(document).ready(function() {
         console.log(res);
         $('.tweet').empty();
         renderTweets(res);
+        $("#tweet-text").replaceWith(`<textarea name="text" id="tweet-text" class="edit-text-area"></textarea>`);
+
       });
     }
 });
