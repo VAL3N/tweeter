@@ -19,7 +19,9 @@
   font-weight: 400;
 }
 .new-created-tweet:hover .user-handle {
-  visibility: visible;
+  /* visibility: visible; */
+  font-weight: 400;
+  color: #545149;
 }
 
 .username-background {
@@ -44,14 +46,13 @@
 }
 
 .tweet-content {
-  display: flex;
-  align-self: center;
   word-wrap: break-word;
+  overflow-wrap: break-word;
   padding-left: 1em;
   margin: 0em 1em;
   border-bottom: 5px solid #545149;
   font-weight: 300;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   width: 95%;
 }
 
@@ -70,8 +71,9 @@
 }
 
 .user-handle {
-  
-  visibility: hidden;
+  font-weight: 200;
+  color: #9e9e9e;
+  /* visibility: hidden; */
 }
 
 .h6-element {
