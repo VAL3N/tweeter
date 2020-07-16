@@ -96,7 +96,12 @@ $(document).ready(function() {
     $('#new-tweet-form').submit(function(event) {
 
       event.preventDefault();
-      
+
+      if ($('textarea').val().length === 0 ) {
+        alert('Your text area is empty!');
+      } else if ($("textarea").val().length > 140) {
+        alert('Woah there cowboy, you\'ve gone too far!');
+      } else {
       $.ajax({ 
         url: '/tweets/', 
         method: 'POST', 
@@ -106,6 +111,8 @@ $(document).ready(function() {
         console.log('Success: ', res);
         loadTweets(res);
       });
+      
+    }
 
     });
 
