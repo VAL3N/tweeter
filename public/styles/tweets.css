@@ -46,6 +46,7 @@
 .tweet-content {
   display: flex;
   align-self: center;
+  word-wrap: break-word;
   padding-left: 1em;
   margin: 0em 1em;
   border-bottom: 5px solid #545149;
