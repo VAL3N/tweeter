@@ -6,30 +6,30 @@
 
 $(document).ready(function() {
 
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ]
+  const data = [
+    {
+      "user": {
+        "name": "Newton",
+        "avatars": "https://i.imgur.com/73hZDYK.png"
+        ,
+        "handle": "@SirIsaac"
+      },
+      "content": {
+        "text": "If I have seen further it is by standing on the shoulders of giants"
+      },
+      "created_at": 1461116232227
+    },
+    {
+      "user": {
+        "name": "Descartes",
+        "avatars": "https://i.imgur.com/nlhLi3I.png",
+        "handle": "@rd" },
+      "content": {
+        "text": "Je pense , donc je suis"
+      },
+      "created_at": 1461113959088
+    }
+  ];
 
   // new code
   const renderTweets = function(data) {
@@ -41,31 +41,15 @@ $(document).ready(function() {
 
 
 
-  // const createTweetElement = function(data) {
-
-  //   // const user = { 
-  //   //   name: data.user.name, 
-  //   //   avatar: data.user.avatar, 
-  //   //   handle: data.user.handle, 
-  //   //   tweetText: data.content.text, 
-  //   //   createdAt: data.created_at 
-  //   // };
-
-  //   $('.tweet header .name').text(data.user.name);
-  //   $('.tweet header .user-handle').text(data.user.handle);
-  //   $('.tweet .tweet-content').text(data.content.text);
-  //   $('.tweet footer h6').text(data.created_at);
-
-  // };
-
-
-
-
   const createTweetElement = function(data) {
 
     let phrase = data.content.text;
+    const newDate = new Date(data.created_at);
+    // console.log(newDate);
+    const today = Date.now();
+    const daysAgo = Math.round((today - newDate) / 1000 / 60 / 60 / 24);
 
-    const newTweet = 
+    const newTweet =
       $(`<article class="new-created-tweet">
 
         <header class="username-background">
@@ -82,8 +66,14 @@ $(document).ready(function() {
         </p>
 
         <footer class="center-footer">
-            <h6 class="h6-element">${data.created_at}</h6>
-            <h6 class="h6-element">reactions</h6>
+            <h6 class="h6-element">${daysAgo} Days ago</h6>
+            <h6 class="h6-element">
+              <span>
+                <i class="fas fa-flag"></i>
+                <i class="fas fa-retweet"></i>
+                <i class="fas fa-heart"></i>
+              </span>
+          </h6>
         </footer>
 
       </article>`);
@@ -92,48 +82,50 @@ $(document).ready(function() {
   
     return $(newTweet);
     
+  };
+
+  renderTweets(data);
+
+
+  const loadTweets = function() {
+    $.ajax({ url: '/tweets/', method: 'GET' })
+    .then(function (res) {
+      //console.log(res);
+      $('.tweet').empty();
+      renderTweets(res);
+    });
+    $('#tweet-text').val('');
+    $('.counter').val(140);
   }
 
-    //renderTweets(data);
+  loadTweets();
 
+  $('#new-tweet-form').submit(function(event) {
 
-
-    $('#new-tweet-form').submit(function(event) {
-
-      event.preventDefault();
-
-      if ($('textarea').val().length === 0 ) {
-        $('.alert-2').slideDown(1000);
-        $('.alert').slideUp(1000);
-      } else if ($("textarea").val().length > 140) {
-        $('.alert').slideDown(1000);
-        $('.alert-2').slideUp(1000);
-      } else {
-        $('.alert').slideUp(1000);
-        $('.alert-2').slideUp(1000);
-      $.ajax({ 
-        url: '/tweets/', 
-        method: 'POST', 
-        data: $(this).find('textarea').serialize() 
-      })
-      .then(function(res) {
-        console.log('Success: ', res);
-        loadTweets(res);
-      });
+    event.preventDefault();
+      
+    if ($('textarea').val().length === 0 ) {
+      $('.alert-2').slideDown(1000);
+      $('.alert').slideUp(1000);
+    } else if ($("textarea").val().length > 140) {
+      $('.alert').slideDown(1000);
+      $('.alert-2').slideUp(1000);
+    } else {
+      $('.alert').slideUp(1000);
+      $('.alert-2').slideUp(1000);
+    $.ajax({ 
+      url: '/tweets/', 
+      method: 'POST', 
+      data: $(this).find('textarea').serialize() 
+    })
+    .then(function(res) {
+      //console.log('Success: ', res);
+      loadTweets(res);
+    });
       
     }
 
-    });
+  });
 
 
-    const loadTweets = function() {
-      $.ajax({ url: '/tweets/', method: 'GET' })
-      .then(function (res) {
-        console.log(res);
-        $('.tweet').empty();
-        renderTweets(res);
-      });
-      $('#tweet-text').val('');
-      $('.counter').val(140);
-    }
 });
