@@ -85,10 +85,37 @@ $(document).ready(function() {
 
       </article>`;
   
-      return $(newTweet);
+    return $(newTweet);
     
-    }
+  }
 
     renderTweets(data);
 
+
+
+    $('#new-tweet-form').submit(function(event) {
+
+      event.preventDefault();
+      
+      $.ajax({ 
+        url: '/tweets/', 
+        method: 'POST', 
+        data: $(this).find('textarea').serialize() 
+      })
+      .then(function(res) {
+        console.log('Success: ', res);
+        loadTweets(res);
+      });
+
+    });
+
+
+    const loadTweets = function() {
+      $.ajax({ url: '/tweets/', method: 'GET' })
+      .then(function (res) {
+        console.log(res);
+        $('.tweet').empty();
+        renderTweets(res);
+      });
+    }
 });
