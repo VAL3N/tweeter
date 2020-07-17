@@ -6,8 +6,13 @@ This repository originally had the starter code for the project: I forked and cl
 
 ## Screenshots of Final Product
 
+Desktop Mode - One of the main pages on the app seen through desktop view.
 !["Desktop Mode - One of the main pages on the app seen through desktop view"](https://github.com/VAL3N/tweeter/blob/master/docs/Desktop-Mode.png)
+
+Tablet Mode - The main page on the app seen through tablet view.
 !["Tablet Mode - The main page on the app seen through tablet view"](https://github.com/VAL3N/tweeter/blob/master/docs/Tablet-Mode.png)
+
+Mobile Mode - The main page on the app seen through mobile view using the device toolbar in the Dev Tools on Chrome browser.
 !["Mobile Mode - The main page on the app seen through mobile view using the device toolbar in the Dev Tools on Chrome browser"](https://github.com/VAL3N/tweeter/blob/master/docs/Mobile-Mode.png)
 
 
